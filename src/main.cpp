@@ -3,7 +3,8 @@
 
 constexpr char SSID[] = "YOUR_SSID";
 constexpr char PASS[] = "PASSWORD";
-const IPAddress HOST(192,168,1,13);
+const IPAddress HOST(192,168,1,13); // IP python server is listening on
+constexpr int PORT = 8000; // Port server is active on
 constexpr int DHT11_PIN = 2;
 SimpleDHT11 dht11;
 WiFiClient client;
@@ -31,7 +32,7 @@ void setup() {
 
 void loop() {
   // Check if a client has connected
-  if(client.connect(HOST, 8000))
+  if(client.connect(HOST, PORT))
   {
     byte temperature = 0;
     byte humidity = 0;
